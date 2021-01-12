@@ -5,6 +5,7 @@ public class Psize {
 	private int product_id;
 	private String petfit;
 	
+	
 	public int getPsize_id() {
 		return psize_id;
 	}

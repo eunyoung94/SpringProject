@@ -93,7 +93,6 @@ input[type=button]:hover {
 	cursor:pointer;
 }
 </style>
-
 <script>
 var uploadFiles=[]; //미리보기 이미지 목록 
 var psize=[] ; //유저가 선택한 사이즈를 담는 배열 

@@ -1,6 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ashion Template">

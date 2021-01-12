@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+  
     
  <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -22,11 +20,11 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-        	<%if(session.getAttribute("member")==null){ %>
-            	<a href="/shop/member/loginForm">Login</a>
+           <%if(session.getAttribute("member")==null){ %>
+               <a href="/shop/member/loginForm">Login</a>
             <%}else{ %>
-            	<a href="/shop/member/logout">LogOut</a>
-        	<%} %>
+               <a href="/shop/member/logout">LogOut</a>
+           <%} %>
             <a href="/shop/member/registForm">Register</a>
         </div>
     </div>
@@ -44,7 +42,7 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                        	<li></li>
+                           <li></li>
                             <li class="active"><a href="/">Home</a></li>
                             <li><a href="#">옷</a>
                                 <ul class="dropdown">
@@ -81,12 +79,12 @@
                             <li><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                                    <li><a href="#">Product Details</a></li>
+                                    <li><a href="/shop/cart/list">Cart</a></li>
+                                    <li><a href="/shop/payment/form">Checkout</a></li>
+                                    <li><a href="#">Blog Details</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -96,11 +94,15 @@
                     <div class="header__right">
                         <div class="header__right__auth">
                             <%if(session.getAttribute("member")==null){ %>
-            					<a href="/shop/member/loginForm">Login</a>
-            				<%}else{ %>
-            					<a href="/shop/member/logout">LogOut</a>
-        					<%} %>
-                            <a href="/shop/member/registForm">Register</a>
+                           <a href="/shop/member/loginForm">Login</a>
+                        <%}else{ %>
+                           <a href="/shop/member/logout">LogOut</a>
+                       <%} %>
+                             <%if(session.getAttribute("member")==null){ %>
+                               <a href="/shop/member/registForm">Register</a>
+                        <%}else{ %>
+                           <a href="/shop/member/mypage_cart">MyPage</a>
+                       <%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>

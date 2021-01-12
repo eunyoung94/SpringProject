@@ -1,11 +1,17 @@
 package com.koreait.petshop.controller.member;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +48,17 @@ public class MemberController {
 		return mav;
 	}
 	
-	
+	//로그인 요청 처리
+	@PostMapping(value="/shop/member/login")
+	public String login(Member member,HttpServletRequest request) {
+		
+		//db존재여부확인
+		Member obj = memberService.select(member);
+		//세션에 회원정보 담아두기
+		HttpSession session=request.getSession();
+		session.setAttribute("member", obj); //현재 클라이언트 요청과 연계된 세션에 보관
+		return "redirect:/";
+	}
 	
 	//아이디 중복 검사
 	@RequestMapping(value ="/shop/member/memberIdChk", method = RequestMethod.POST)
@@ -57,6 +73,7 @@ public class MemberController {
 			return "fail"; //중복아이디 있음
 		}
 	}
+	
 	
 	//회원가입 요청처리
 	@RequestMapping(value="/shop/member/regist", method=RequestMethod.POST, produces="text/html;charset=utf-8")
@@ -80,7 +97,34 @@ public class MemberController {
 		return sb.toString();
 	}
 	
-	//예외 핸들러 처리 (가입오류)
+	//마이페이지 cart(기본값) 요청처리
+	@GetMapping("/shop/member/mypage_cart")
+	public String mypageCart() {
+		return "/shop/member/mypage_cart";
+	}
+	
+	//마이페이지 계정관리 요청처리
+	@GetMapping("/shop/member/mypage_management")
+	public String mypageModify() {
+		return "/shop/member/mypage_management";
+	}
+	
+	// Admin페이지	
+	//회원 목록 리스트
+	@GetMapping("/admin/member/list")
+	public ModelAndView getMemberList() {
+		ModelAndView mav = new ModelAndView("admin/member/member_list");
+	
+		List memberList = memberService.selectAll();
+		mav.addObject("memberList",memberList);
+		
+		logger.debug("memberList.size()"+memberList.size());
+		
+		return mav;
+	}
+	
+	
+	//예외 핸들러 처리 (로그인 오류)
 	@ExceptionHandler(MemberRegistException.class)
 	@ResponseBody
 	public String handleException(MemberRegistException e) {

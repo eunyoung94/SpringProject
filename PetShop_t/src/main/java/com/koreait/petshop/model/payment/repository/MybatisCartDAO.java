@@ -60,9 +60,11 @@ public class MybatisCartDAO  implements CartDAO{
 		}
 
 		@Override
-		public void delete(Cart cart) {
-			// TODO Auto-generated method stub
-			
+		public void delete(Cart cart)throws CartException{ // pk를 이용한 삭제 
+			int result = sqlSessionTemplate.delete("Cart.delete", cart.getCart_id());
+			if(result==0) {
+				throw new CartException("장바구니 삭제 실패");
+			}
 		}
 		@Override
 		public void delete(Member member) throws CartException{

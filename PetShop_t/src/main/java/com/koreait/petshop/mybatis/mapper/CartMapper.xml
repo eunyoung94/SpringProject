@@ -11,8 +11,30 @@
 		select * from cart where member_id=#{member_id}and product_id=#{product_id}
 	</select>
 	
-	<!-- 장바구니 목록가져오기  -->
-	<resultMap id="joinSubCategory" type="Cart" >
-	
+	<!-- 장바구니 목록 가져오기 -->
+	<resultMap id="joinSubCategory" type="Cart">
+		<id column="cart_id" property="cart_id"/>
+		<result column="product_id" property="product_id"/>
+		<result column="member_id" property="member_id"/>
+		<result column="quantity" property="quantity"/>
+		<result column="product_name" property="product_name"/>
+		<result column="price" property="price"/>
+		<result column="detail" property="detail"/>
+		<result column="filename" property="filename"/>
+		<association column="subcategory_id"
+					 property="subcategory"
+					 javaType="SubCategory"
+					 select="SubCategory.select"/>
 	</resultMap>
+	
+	<!--장바구니삭제-->
+	<delete id="delete" parameterType="int">
+		delete from cart where member_id=#{member_id}
+	</delete>
+	
+	<!-- 장바구니 수량수정 -->
+	<update id="update" parameterType="Cart">
+		update cart set quantity=#{quantity} where cart_id=#{cart_id}
+	</update>
+	
 </mapper>

@@ -1,7 +1,6 @@
 package com.koreait.petshop.model.domain;
 
 public class SubCategory {
-	
 	private int subcategory_id;
 	private int topcategory_id;
 	private String name;
@@ -27,3 +26,4 @@ public class SubCategory {
 	
 	
 }
+

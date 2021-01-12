@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -68,8 +69,8 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="./index.html">Home</a></li>
-                            <li><a href="#">Women’s</a></li>
-                            <li><a href="#">Men’s</a></li>
+                            <li><a href="#">Womenâs</a></li>
+                            <li><a href="#">Menâs</a></li>
                             <li class="active"><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -145,13 +146,13 @@
                         </div>
                         <div class="blog__details__desc">
                             <p>Afashion season can be defined as much by the people on the catwalk as it can by the
-                                clothes they are wearing. This time around, a key moment came at the end of Marc Jacobs’
+                                clothes they are wearing. This time around, a key moment came at the end of Marc Jacobsâ
                                 New York show, when an almost makeup-free Christy Turlington made a rare return to the
-                                catwalk, aged 50 (she also stars, with the designer himself, in the label’s AW ad
+                                catwalk, aged 50 (she also stars, with the designer himself, in the labelâs AW ad
                             campaign), where the average catwalk model is around 18.</p>
-                            <p>A few days later, Simone Rocha arguably upped the ante. The 32-year-old’s show – in part
-                                inspired by Louise Bourgeois, who lived until she was 98 – featured models in their 30s
-                            and 40s, including cult favourite Jeny Howorth and actor Chloë Sevigny.</p>
+                            <p>A few days later, Simone Rocha arguably upped the ante. The 32-year-oldâs show â in part
+                                inspired by Louise Bourgeois, who lived until she was 98 â featured models in their 30s
+                            and 40s, including cult favourite Jeny Howorth and actor ChloÃ« Sevigny.</p>
                         </div>
                         <div class="blog__details__quote">
                             <div class="icon"><i class="fa fa-quote-left"></i></div>

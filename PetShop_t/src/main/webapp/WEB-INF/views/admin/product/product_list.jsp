@@ -7,7 +7,6 @@
 	Pager pager = new Pager();
 	pager.init(request, productList); //페이지 처리에 대한 계산!!
 	
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +28,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 //글쓰기 폼 요청하기
 $(function(){
@@ -69,8 +68,8 @@ $(function(){
 				<%Product product = (Product)productList.get(curPos++); %>
 				<tr>
 					<td><a href="/admin/product/detail?product_id=<%=product.getProduct_id()%>"><%=num--%></td>
-					<td><img src="/resources/data/addon/<%=product.getProduct_id()%>.<%=product.getFilename()%>" width="50px"></td>
-					<td><%=product.getSubcategory_id().getSubcategory_id() %></td>
+					<td><img src="/resources/data/basic/<%=product.getProduct_id()%>.<%=product.getFilename()%>" width="50px"></td>
+					<td><%=product.getSubCategory().getSubcategory_id() %></td>
 					<td><%=product.getProduct_name() %></td>
 					<td><%=product.getPrice() %></td>
 				</tr>
@@ -95,11 +94,10 @@ $(function(){
 		</tr>
 			<tr>
 				<td colspan="6">
-					<button type="button" onClick="location.href='/admin/product/registform'">상품등록</button>
+					<button type="button">상품등록</button>
 				</td>
 			</tr>
 			</table>
-			</p>
 		</div>
 	</section>
 <%@ include file="../../shop/shopFooter.jsp" %>

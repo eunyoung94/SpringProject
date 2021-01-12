@@ -5,6 +5,7 @@ public class Member {
 	private String user_id;
 	private String name;
 	private String password;
+	private String phone;
 	private String email_id;
 	private String email_server;
 	private String zipcode;
@@ -65,6 +66,13 @@ public class Member {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 	
 	
 }

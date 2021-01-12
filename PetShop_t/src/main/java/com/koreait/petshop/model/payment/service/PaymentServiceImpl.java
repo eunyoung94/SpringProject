@@ -1,5 +1,6 @@
 package com.koreait.petshop.model.payment.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +88,15 @@ public class PaymentServiceImpl implements PaymentService{
 		
 		//주문요약등록 
 		orderSummaryDAO.insert(orderSummary);
+		int order_summary_id= orderSummary.getOrder_summeary_id();
+		int member_id = orderSummary.getMember_id();
+		int total_price = orderSummary.getTotal_price();
+		String orderdate= orderSummary.getOrderdate();
+		int order_state_id=orderSummary.getOrder_state_id();
+		int paymethod_id=orderSummary.getPaymethod_id();
+		
+		
+		
 		//주문 요약이 등록된 이후 , orderSummary VO에는 mybatis의 selectkey에 의해 order_summary_id가 채워져있다. 
 		//따라서 취득한 주문번호를 받는사람, 상세에 넣어줘야한다.
 		//받는사람 정보등록 
