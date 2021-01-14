@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.koreait.petshop.exception.MailSendException;
 import com.koreait.petshop.exception.MemberRegistException;
+import com.koreait.petshop.model.common.MessageData;
 import com.koreait.petshop.model.domain.Member;
 import com.koreait.petshop.model.member.service.MemberService;
 
@@ -149,4 +150,18 @@ public class MemberController {
 		//시스템 관리자에게 에러알리기
 		return mav;
 	}
+	
+	@GetMapping(value="/shop/member/logout")
+	   public ModelAndView logout(HttpServletRequest request) {
+      request.getSession().invalidate(); //세션 무효화. 세션 효력상실
+      MessageData messageData = new MessageData();
+      messageData.setResultCode(1);
+      messageData.setMsg("로그아웃 되었습니다");
+      messageData.setUrl("/");
+      
+      ModelAndView mav = new ModelAndView("/shop/message/shop_message");
+      mav.addObject("messageData", messageData);
+      
+      return mav;
+	   }
 }

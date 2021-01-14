@@ -46,7 +46,9 @@ public class RestProductController implements ServletContextAware{
 		fileManager.setSaveAddonDir(servletContext.getRealPath(fileManager.getSaveAddonDir()));
 		
 		logger.debug("저장 경로 "+this.servletContext.getRealPath(fileManager.getSaveBasicDir()));
+		logger.debug("저장 경로 "+this.servletContext.getRealPath(fileManager.getSaveAddonDir()));
 		logger.debug(fileManager.getSaveBasicDir());
+		logger.debug(fileManager.getSaveAddonDir());
 	}
 	
 	//등록
@@ -57,23 +59,17 @@ public class RestProductController implements ServletContextAware{
 		logger.debug("상품명 "+product.getProduct_name());
 		logger.debug("가격 "+product.getPrice());
 		logger.debug("상세내용 "+product.getDetail());
-		
-
-		
 		for(Color color : product.getColor() ) {
 			logger.debug("색상  "+color.getPicker());
 		}
 		for(Psize psize : product.getPsize() ) {
 			logger.debug("사이즈  "+psize.getPetfit());
 		}
-		
 		productService.regist(fileManager, product);
-		
 		MessageData messageData = new MessageData();
 		messageData.setResultCode(1);
 		messageData.setMsg("등록성공.");
 		messageData.setUrl("/admin/product/list");
-
 		return messageData;
 	}
 }

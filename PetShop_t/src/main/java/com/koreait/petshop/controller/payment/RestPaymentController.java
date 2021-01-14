@@ -23,6 +23,7 @@ import com.koreait.petshop.model.domain.Member;
 import com.koreait.petshop.model.payment.service.PaymentService;
 import com.koreait.petshop.model.product.service.TopCategoryService;
 
+
 @Controller
 @RequestMapping(value="/async")
 public class RestPaymentController {
@@ -31,7 +32,7 @@ public class RestPaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	//장바구니에 상품 담기 요청 
+	//장바구니에 상품 담기 요청
 	@RequestMapping(value="/shop/cart/regist", method=RequestMethod.POST)
 	@ResponseBody
 	public MessageData registCart(Cart cart, HttpServletRequest request) {
@@ -43,7 +44,6 @@ public class RestPaymentController {
 		cart.setMember_id(member.getMember_id());
 		paymentService.insert(cart);
 		
-		//MessageConverter 에 의해 VO는 JSON형태로 응답되어질 수 있다!!
 		MessageData messageData = new MessageData();
 		messageData.setResultCode(1);
 		messageData.setMsg("장바구니에 상품이 담겼습니다");
@@ -51,6 +51,8 @@ public class RestPaymentController {
 		
 		return messageData;
 	}
+	
+	
 	
 	
 	//장바구니와 관련된 예외처리 핸들러

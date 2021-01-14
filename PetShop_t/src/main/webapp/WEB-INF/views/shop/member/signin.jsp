@@ -98,13 +98,13 @@ function login(){
 							<div class="col-lg-12">
 								<div class="checkout__form__input">
 									<p>아이디<span>*</span></p>
-									<input type="text" name="user_id" class="user_id">                                   
+									<input type="text" name="user_id" class="user_id"  value="choi0035">                                   
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="checkout__form__input">
 									<p>비밀번호<span>*</span></p>
-									<input type="password" name="password">
+									<input type="password" name="password" value="1234">
 								</div>
 							</div>                        	 	
 						</div>

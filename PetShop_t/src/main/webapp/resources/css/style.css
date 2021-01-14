@@ -165,7 +165,7 @@ ol {
 	font-weight: 600;
 	padding: 12px 30px 10px;
 	color: #ffffff;
-	background:#ffffff;
+	background: #ca1515;
 }
 
 .site-btn {
@@ -1009,7 +1009,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "�꼨";
+	content: "";
 	font-family: "FontAwesome";
 }
 
@@ -1381,7 +1381,7 @@ ol {
 
 .categories__accordion .card-heading a:after,
 .categories__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "�꼪";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1391,7 +1391,7 @@ ol {
 }
 
 .categories__accordion .card-heading.active a:after {
-	content: "�꼩";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1402,7 +1402,7 @@ ol {
 
 .categories__accordion .card-heading a[aria-expanded=true]:after,
 .categories__accordion .card-heading>a.active:after {
-	content: "�꼩";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1792,7 +1792,7 @@ ol {
 	font-weight: 600;
 	text-transform: uppercase;
 	padding: 14px 30px 15px;
-	border-radius: 30px;
+	border-radius: 50px;
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -2181,14 +2181,11 @@ ol {
 }
 
 .cart__btn {
-	margin-bottom: 3px;
+	margin-bottom: 50px;
 }
 
 .cart__btn.update__btn {
 	text-align: right;
-}
-.cart__btn.deleteAll__btn {
-	text-align: left;
 }
 
 .cart__btn a {
@@ -2202,7 +2199,7 @@ ol {
 }
 
 .cart__btn a span {
-	color: Pink;
+	color: #ca1515;
 	font-size: 14px;
 	margin-right: 5px;
 }
@@ -3600,7 +3597,7 @@ ol {
 	}
 	.cart__btn {
 		text-align: center;
-		margin-bottom: 10px;
+		margin-bottom: 25px;
 	}
 	.cart__btn.update__btn {
 		text-align: center;
