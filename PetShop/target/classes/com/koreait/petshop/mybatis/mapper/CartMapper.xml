@@ -38,6 +38,10 @@
 		where  c.product_id=p.product_id and member_id=#{member_id}
 	</select>
 	
+	<select id="select" parameterType="int">
+		select * from cart where cart_id=#{cart_id}
+	</select>
+	
 	<!-- 장바구니 비우기 -->
 	<delete id="delete" parameterType="int">
 		delete from cart where member_id=#{member_id}
@@ -51,7 +55,9 @@
 	<!-- 장바구니 수량 수정  -->
 	<update id="update" parameterType="Cart">
 		update cart set quantity=#{quantity} where cart_id=#{cart_id}		
-	</update>					
+	</update>	
+	
+					
 </mapper>
 
 

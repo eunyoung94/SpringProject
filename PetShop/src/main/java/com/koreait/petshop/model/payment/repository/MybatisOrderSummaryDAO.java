@@ -1,5 +1,7 @@
 package com.koreait.petshop.model.payment.repository;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,4 +22,16 @@ public class MybatisOrderSummaryDAO implements OrderSummaryDAO {
 			throw new OrderSummaryException("주문요약 실패!");
 		}
 	}
+
+	@Override
+	public List selectAll() { // orderSummary 전체조회 , 
+		return sqlSessionTemplate.selectList("OrderSummary.selectAll");
+	}
+
+	@Override
+	public List select(int member_id) { //특정멤버만 조회
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("OrderSummary.select", member_id); 
+	}
+	
 }

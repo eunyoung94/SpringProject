@@ -1,18 +1,20 @@
 package com.koreait.petshop.model.domain;
 
 public class OrderSummary {
-	private int order_summeary_id;
+	private int order_summary_id;
 	private int member_id;
 	private int total_price;
 	private String orderdate;
 	private int order_state_id;
+	
+	private Paymethod paymethod;
 	private int paymethod_id;
 	
-	public int getOrder_summeary_id() {
-		return order_summeary_id;
+	public int getOrder_summary_id() {
+		return order_summary_id;
 	}
-	public void setOrder_summeary_id(int order_summeary_id) {
-		this.order_summeary_id = order_summeary_id;
+	public void setOrder_summary_id(int order_summary_id) {
+		this.order_summary_id = order_summary_id;
 	}
 	public int getMember_id() {
 		return member_id;
@@ -38,6 +40,12 @@ public class OrderSummary {
 	public void setOrder_state_id(int order_state_id) {
 		this.order_state_id = order_state_id;
 	}
+	public Paymethod getPaymethod() {
+		return paymethod;
+	}
+	public void setPaymethod(Paymethod paymethod) {
+		this.paymethod = paymethod;
+	}
 	public int getPaymethod_id() {
 		return paymethod_id;
 	}
@@ -45,5 +53,6 @@ public class OrderSummary {
 		this.paymethod_id = paymethod_id;
 	}
 	
+
 	
 }

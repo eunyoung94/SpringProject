@@ -1,8 +1,9 @@
 package com.koreait.petshop.model.domain;
 
-public class OrderState {
+public class OrderState extends OrderSummary{
 	private int order_state_id;
 	private String state;
+	private OrderSummary orderSummary;
 	
 	public int getOrder_state_id() {
 		return order_state_id;
@@ -16,6 +17,15 @@ public class OrderState {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public OrderSummary getOrderSummary() {
+		return orderSummary;
+	}
+	public void setOrderSummary(OrderSummary orderSummary) {
+		this.orderSummary = orderSummary;
+	}
+	
+
+	
 	
 	
 }

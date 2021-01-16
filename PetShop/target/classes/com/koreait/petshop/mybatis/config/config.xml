@@ -32,7 +32,7 @@
 		<mapper resource="com/koreait/petshop/mybatis/mapper/CartMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/ReviewMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/ScoreMapper.xml"/>
-			<mapper resource="com/koreait/petshop/mybatis/mapper/OrderStateMapper.xml"/>
+		<mapper resource="com/koreait/petshop/mybatis/mapper/OrderStateMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/PaymethodMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/OrderSummaryMapper.xml"/>
 		<mapper resource="com/koreait/petshop/mybatis/mapper/OrderDetailMapper.xml"/>

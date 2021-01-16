@@ -5,7 +5,7 @@
 <%@page import="com.koreait.petshop.model.domain.Cart"%>
 <%@page import="java.util.List"%>
 <%
-//장바구니에 상품이 담기긴 해요 ? 아니요 그럼 담는 쪽붙처 확인해ㅘ봐야 해요 
+
 //Pager pager = (Pager)request.getAttribute("pager");
 //List<Cart> cartList = pager.getList();
 List<Cart> cartList = (List) request.getAttribute("cartList");

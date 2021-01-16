@@ -21,7 +21,9 @@ public interface PaymentService {
 	public void delete(Member member); //회원에 속한 데이터 삭제할예정
 	
 	//결제 업무
-	public List selectPaymethodList();
+	public List selectPaymethodList(); //리스트 얻어오기
 	public void registOrder(OrderSummary orderSummary, Receiver receiver,OrderDetail orderDetail,Product product);//트랜잭션 처리
-	//등록정보조회하기
+	public List selectOrderList();
+	public List selectOrderList(int member_id); //특정 회원 주문내역 가져오기 
+	
 }

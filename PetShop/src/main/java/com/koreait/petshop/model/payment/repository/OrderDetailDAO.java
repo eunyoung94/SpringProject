@@ -5,3 +5,4 @@ import com.koreait.petshop.model.domain.OrderDetail;
 public interface OrderDetailDAO {
 	public void insert(OrderDetail orderDetail);
 }
+ 

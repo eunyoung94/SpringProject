@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDetail">
+
 	<insert id="insert" parameterType="OrderDetail">
 	 	insert into order_detail(order_detail_id,order_summary_id,product_id,price,quantity)
 	 	values(seq_order_detail.nextval,#{order_summary_id},#{product_id},#{price},#{quantity})
 	</insert>
+	
+	<select id="select" parameterType="int" resultType="OrderDetail">
+		select * from order_detail where order_detail_id=#{order_detail_id}
+	</select>
+	
+	<select id="selectByOrderSummaryID" parameterType="int" resultType="OrderDetail">
+		select * from order_detail where order_summary_id=#{order_summary_id}
+	</select>
+	
+		<!-- 주문요약와 디테일정보 매핑  -->
+		<resultMap id="orderSumaryDetail" 	 	type="OrderDetail">
+			<id column="order_detail_id"		property="order_detail_id"/>
+			<result column="order_summary_id"   property="order_summary_id"/>
+			<result column="product_id" 		property="product_id"/>
+			<result column="price" 				property="price"/>
+			<result column="quantity" 			property="quantity"/>
+				
+			<collection 
+			column="orderSummary_id"
+			property="orderSummary"
+			javaType="OrderSummary"
+			ofType="OrderSummary"
+			select="OrderSummary.select"/>	
+			
+		</resultMap>
+		<select id="selectAll" resultMap="orderSumaryDetail">
+			select order_detail_id,order_summary_id,product_id,price,quantity from order_detail 
+		</select>
+		
 
 </mapper>

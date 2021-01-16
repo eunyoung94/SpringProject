@@ -1,9 +1,11 @@
+<%@page import="com.koreait.petshop.model.domain.Cart"%>
 <%@page import="com.koreait.petshop.model.domain.Paymethod"%>
 <%@page import="java.util.List"%>
 <%@page import="com.koreait.petshop.model.domain.OrderSummary"%>
 <%@page import="com.koreait.petshop.model.domain.Member"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
+	List<Cart> cartList = (List) request.getAttribute("cartList");
 	Member member=(Member)session.getAttribute("member");
 	OrderSummary orderSummary=(OrderSummary)request.getAttribute("orderSummary");
 %>
@@ -74,9 +76,10 @@ tr:nth-child(even){background-color: #f2f2f2}
 												<p style="font-family:Geneva;text-align:center;font-size:20px" ><%=member.getName()%> 님이 결제확인 목록입니다 </p>
 											</div>
 											<div style="overflow-x:auto;">
+											
+									<%for (Cart cart : cartList) { %>		
 											  <table>
 											    <tr>
-											      
 											      <th>상품명</th>
 											      <th>상품가격</th>
 											      <th>구매개수</th>
@@ -85,24 +88,23 @@ tr:nth-child(even){background-color: #f2f2f2}
 											      <th>수령주소</th>
 											      <th>결제방법</th>
 											      <th>구매날짜</th>
-											      <th>결제금액</th>
-											  
+											      <th>결제금액</th>									  
 											    </tr>
 											    
-											    <tr>
-											      
+											    <tr>									      
+											      <td><%=cart.getProduct_name() %></td>
+											      <td><%=cart.getPrice() %></td>
 											      <td></td>
-											      <td>50</td>
-											      <td>50</td>
+											      <td></td>
 											      <td><%=member.getName()%></td>
 											      <td><%=member.getPhone()%></td>
-											      <td><%=member.getAddr()%></td>
-											      <td>50</td>
-											      <td>50</td>
-											      <td>50</td>
-											  
+											      <td><%=member.getAddr()%></td>											      
+											      <td></td>
+											      <td></td>										  
 											    </tr>	
 											  </table>
+										<%}%>			  
+											  
 											</div>
 								
 									</section>

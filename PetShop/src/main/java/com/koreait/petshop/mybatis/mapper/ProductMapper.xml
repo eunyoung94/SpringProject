@@ -10,6 +10,8 @@
 		<result column="detail" property="detail" />
 		<result column="filename" property="filename" />
 	</resultMap>
+	
+	
 	<select id="selectAll" resultMap="productSubCategoryMap">
 		select * from product order by product_id desc
 	</select>

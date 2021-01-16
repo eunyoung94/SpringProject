@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Receiver">
+	
 	<insert id="insert" parameterType="Receiver">
 		insert into receiver(receiver_id, order_summary_id, receiver_name, receiver_phone, receiver_addr)
 		values(seq_receiver.nextval, #{order_summary_id}, #{receiver_name}, #{receiver_phone}, #{receiver_addr})
 	</insert>
 
-</mapper>
+	<!-- 주문요약와 배송정보 매핑  -->
+		<resultMap id="orderSumaryReceiver"  	       type="Receiver">
+			<id column="receiver_id"				   property="receiver_id"/>
+			<result column="order_summary_id" 		   property="order_summary_id"/>
+			<result column="receiver_name" 		       property="receiver_name"/>
+			<result column="receiver_addr" 			   property="receiver_addr"/>
+			<result column="receiver_phone" 	       property="receiver_phone"/>
+			
+			<association 
+			column="orderSummary_id"
+			property="orderSummary"
+			javaType="OrderSummary"
+			select="OrderSummary.select"/> 
+			
+		</resultMap>
+	<!-- 오더써머리에서 골라진 1개 receiver 맵핑 -->	
+		<select id="selectAll" resultMap="orderSumaryReceiver">
+			select receiver_id,order_summary_id,receiver,receiver_addr,receiver_phone
+			from receiver 
+		</select>
+		
+</mapper>	

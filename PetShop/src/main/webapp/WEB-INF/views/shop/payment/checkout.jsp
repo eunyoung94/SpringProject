@@ -38,7 +38,7 @@
 	
 	function order(){
 		$("#checkout__form").attr({
-			action:"/shop/payment/confirm",
+			action:"/shop/payment/regist",
 			method:"post"
 		});
 		$("#checkout__form").submit();

@@ -1,6 +1,5 @@
 package com.koreait.petshop.model.payment.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +38,11 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public List selectCartList() {
-		// TODO Auto-generated method stub
-		return null;
+		return cartDAO.selectAll();
 	}
 
 	@Override
-	public List selectCartList(int member_id) {
+	public List selectCartList(int member_id) { //멤버id로 카트리스트 전부 가져오기 
 		return cartDAO.selectAll(member_id);
 	}
 
@@ -78,37 +76,47 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public List selectPaymethodList() {
+	public List selectPaymethodList() { //배송방법 전부가져오기 
 		return paymethodDAO.selectAll();
 	}
 
 	// 주문등록
 	public void registOrder(OrderSummary orderSummary, Receiver receiver, OrderDetail orderDetail, Product product) {
-		// 주문요약등록
-		orderSummaryDAO.insert(orderSummary); 
+		orderSummaryDAO.insert(orderSummary);  // 1.dao에 insert해서 orderSummary 가져온다 
+		//[내가필요한것]
+		//상품 이름 , 가격, 구매개수, 받을사람이름, 연락처, 주소, 결제방법, 총결제액
 		
-		int order_summary_id = orderSummary.getOrder_summeary_id();
+		//2. orderSummary 정보빼낸다
+		int order_summary_id = orderSummary.getOrder_summary_id();
 		int member_id = orderSummary.getMember_id();
 		int total_price = orderSummary.getTotal_price();
 		String orderdate = orderSummary.getOrderdate();
 		int order_state_id = orderSummary.getOrder_state_id();
 		int paymethod_id = orderSummary.getPaymethod_id();
-		// 주문 요약이 등록된 이후 , orderSummary VO에는 mybatis의 selectkey에 의해 order_summary_id가
-		// 채워져있다.
-
-		// 따라서 취득한 주문번호를 받는사람, 상세에 넣어줘야한다.
-		// 받는사람 정보등록
-		receiver.setOrder_summary_id(orderSummary.getOrder_summeary_id());// 주문번호 전달해주기..
-		receiverDAO.insert(receiver);
-
-		// 주문상세등록
-		orderDetail.setOrder_summary_id(orderSummary.getOrder_summeary_id()); // 주문 상세등록 전당..
-		orderDetailDAO.insert(orderDetail);
-
-		// 장바구니를 조회하여 OrderDetail VO 처리
 		
-		// 장바구니 가져오기
-
+		//3.배송정보에 order_summary_id(key)를 넣어준다! 
+		receiver.setOrder_summary_id(orderSummary.getOrder_summary_id());// 주문번호 전달해주기..
+		receiverDAO.insert(receiver);
+			
+		List<Cart> cartList = cartDAO.selectAll(member_id); //member_id를 통해 카트 전체를 가져온다! 
+		//특정 사람의 id를 통해서 select! --> 그 사람의 카트리스트 목록이 조회됨! 
+		
+		// 주문상세등록 order_summary_id(key)를 넣어준다! 
+		orderDetail.setOrder_summary_id(orderSummary.getOrder_summary_id()); // 주문 상세등록 전담
+		orderDetailDAO.insert(orderDetail);
+		
 	}
+
+	@Override
+	public List selectOrderList(int member_id) { //멤버아이디로 특정 orderSummary만 조회
+		return orderSummaryDAO.select(member_id);
+	}
+
+	@Override
+	public List selectOrderList() { //orderSummary 전체조회 
+		// TODO Auto-generated method stub
+		return orderSummaryDAO.selectAll();
+	}
+
 
 }

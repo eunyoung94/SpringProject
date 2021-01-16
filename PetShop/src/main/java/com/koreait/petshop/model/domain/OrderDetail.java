@@ -2,6 +2,7 @@ package com.koreait.petshop.model.domain;
 
 public class OrderDetail {
 	private int order_detail_id;
+	private OrderSummary orderSummary;
 	private int order_summary_id;
 	private int product_id;
 	private int price;
@@ -37,6 +38,13 @@ public class OrderDetail {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public OrderSummary getOrderSummary() {
+		return orderSummary;
+	}
+	public void setOrderSummary(OrderSummary orderSummary) {
+		this.orderSummary = orderSummary;
+	}
+	
 	
 	
 }
